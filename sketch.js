@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint;
 var engine,world,ground;
 engine = Engine.create();
 world = engine.world ;
-var particle = [];
+var particle =[];
 var score5 = 0;
 
 function setup() 
@@ -160,61 +160,68 @@ function draw()
   {
   particle[j].display();
   }
-  if(frameCount % 60 == 0)
+  if(frameCount % 140 == 0)
   {
     //particle = new Particle(random(0, 800), 10, 10);
-    particle.push(new Particle(random(0, 800), 10, 10));
-    console.log ("Particle x value during creation is " + particle.x);
-    console.log ("Particle y value during creation is " + particle.y);
+    particle.push(new Particle(Math.round(random(0, 800)), 10, 10));
+    console.log ("Particle x value during creation is " + particle[particle.length-1].x);
+    console.log ("Particle y value during creation is " + particle[particle.length-1].y);
+   
   }
+ if(particle.length > 0){
+  //  console.log(particle[particle.length-1].body.position.x)
   score1();
-  //particle.display();
+ }
+//  particle.display();
 }
 function score1()
 {
   //console.log ("Particle x value is " + particle.x);
   //console.log ("Particle y value is " + particle.y);
-  if (particle.x < 100 && particle.x >= 0 && particle.y > 400)
+ if(particle[particle.length-1].body.position.y >400){
+   console.log("i am here")
+  if (particle[particle.length-1].body.position.x < 100 && particle[particle.length-1].body.position.x >= 0 )
   {
-      score5 = score5 - 100;
+      score5 = score5 + 500;
       console.log("Inside first if function");
   }
-  else if (particle.x < 200 && particle.x >= 100 && particle.y > 400)
+  else if (particle[particle.length-1].body.position.x < 200 && particle[particle.length-1].body.position.x >= 100)
   {
-    score5 = score5 + 100;
+    score5 = score5 - 100;
     console.log("Inside second if function");
   }
-  else if (particle.x < 300 && particle.x >= 200 && particle.y > 400)
-  {
-    score5 = score5 - 100;
-    console.log("Inside third if function");
-  }
-  else if (particle.x < 400 && particle.x >= 300 && particle.y > 400)
+  else if (particle[particle.length-1].body.position.x < 300 && particle[particle.length-1].body.position.x >= 200 )
   {
     score5 = score5 + 100;
+    console.log("Inside third if function");
+  }
+  else if (particle[particle.length-1].body.position.x < 400 && particle[particle.length-1].body.position.x >= 300 )
+  {
+    score5 = score5 - 500;
     console.log("Inside fourth if function");
   }
-  else if (particle.x < 500 && particle.x >= 400 && particle.y > 400)
+  else if (particle[particle.length-1].body.position.x < 500 && particle[particle.length-1].body.position.x >= 400 )
   {
-    score5 = score5 - 100;
+    score5 = score5 + 200;
     console.log("Inside fifth if function");
 
   }
-  else if (particle.x < 600 && particle.x >= 500 && particle.y > 400)
+  else if (particle[particle.length-1].body.position.x < 600 && particle[particle.length-1].body.position.x >= 500 )
   {
     score5 = score5 + 100;
     console.log("Inside sixth if function");
 
   }
-  else if (particle.x < 700 && particle.x >= 600 && particle.y > 400)
+  else if (particle[particle.length-1].body.position.x < 700 && particle[particle.length-1].body.position.x >= 600)
   {
     score5 = score5 - 100;
     console.log("Inside seventh if function");
   }
-  else if (particle.x < 800 && particle.x >= 700 && particle.y > 400)
+  else if (particle[particle.length-1].body.position.x < 800 && particle[particle.length-1].body.position.x >= 700 )
   {
-    score5 = score5 + 100;
+    score5 = score5 + 300;
     console.log("Inside eighth if function");
 
   }
+}
 }
